@@ -1,0 +1,9 @@
+name: Hello Action
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "성공적으로 실행되었습니다!"
+
