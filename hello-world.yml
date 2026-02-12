@@ -1,0 +1,37 @@
+
+
+name: My First Hello World
+
+# 언제 이 워크플로우를 실행할지 결정합니다. (이벤트)
+on:
+  push:
+    branches: [ "main" ] # main 브랜치에 코드가 푸시될 때 실행
+  pull_request:
+    branches: [ "main" ] # main 브랜치로 PR이 올 때 실행
+
+# 실제 수행할 작업들을 정의합니다.
+jobs:
+  say-hello-job:
+    # 어떤 운영체제에서 실행할지 정합니다. (GitHub 제공 서버)
+    runs-on: ubuntu-latest
+
+# 실행할 단계들을 순서대로 적습니다.
+    steps:
+      # 1단계: 저장소의 코드를 가상 머신으로 가져옵니다.
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2단계: 터미널 명령어를 실행합니다.
+      - name: Run a greeting script
+        run: |
+          echo "Hello, GitHub Actions!"
+          echo "현재 실행 중인 운영체제는 $(uname) 입니다."
+
+      # 3단계: 다중 라인 명령어 예시
+      - name: Multi-line commands
+        run: |
+          echo "여러 줄의 명령어도"
+          echo "이렇게 실행할 수 있습니다."
+
+
+
